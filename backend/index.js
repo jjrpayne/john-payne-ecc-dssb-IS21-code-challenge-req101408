@@ -55,14 +55,6 @@ app.use(
 app.use("/", require("./routes/general"))
 app.use("/", require("./routes/products"));
 
-app.get('/api/', (req, res) => {
-    res.send('Hello World!');
-})
-// health check
-app.get('/api/health/', (req, res) => {
-    res.status(200).send("Server is healthy.");
-})
-
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}`);
 })
