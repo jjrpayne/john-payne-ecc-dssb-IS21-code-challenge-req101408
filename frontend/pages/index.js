@@ -29,7 +29,7 @@ export default function Home() {
         </h1>
 
         <p className={styles.description}>
-          Total products: XX
+          Total products: {products.length}
         </p>
         <div className={styles.card}>
           <div className="relative overflow-x-auto">
@@ -43,6 +43,7 @@ export default function Home() {
                   <th scope="col" className="px-6 py-3">Developer Names</th>
                   <th scope="col" className="px-6 py-3">Start Date</th>
                   <th scope="col" className="px-6 py-3">Methodology</th>
+                  <th scope="col" className="px-6 py-3">Action</th>
                 </tr>
               </thead>
               <tbody>
@@ -53,9 +54,10 @@ export default function Home() {
                       <td className="px-6 py-4">{product.productName}</td>
                       <td className="px-6 py-4">{product.scrumMasterName}</td>
                       <td className="px-6 py-4">{product.productOwnerName}</td>
-                      <td className="px-6 py-4">{product.Developers}</td>
+                      <td className="px-6 py-4">{product.Developers.toString().replace(/,/g, ', ')}</td>
                       <td className="px-6 py-4">{product.startDate}</td>
                       <td className="px-6 py-4">{product.methodology}</td>
+                      <td className="px-6 py-4"><button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Edit</button></td>
                     </tr>
                   )
                 }
