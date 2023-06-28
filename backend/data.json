@@ -559,18 +559,5 @@
     "startDate": "2019/03/01",
     "methodology": "Agile",
     "location": "https://github.com/bcgov/aqadvisories-eservice"
-  },
-  {
-    "productId": 40,
-    "productName": "New Product",
-    "scrumMasterName": "John Payne",
-    "productOwnerName": "Jonathan Payne",
-    "Developers": [
-      "Jean Payne",
-      "Jon Payne"
-    ],
-    "startDate": "1997/06/20",
-    "methodology": "Waterfall",
-    "location": "https://github.com/bcgov/aqadvisories-eservice"
   }
 ]
