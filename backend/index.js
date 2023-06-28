@@ -52,6 +52,7 @@ app.use(
     swaggerUi.setup(specs)
 );
 
+app.use("/", require("./routes/general"))
 app.use("/", require("./routes/products"));
 
 app.get('/api/', (req, res) => {

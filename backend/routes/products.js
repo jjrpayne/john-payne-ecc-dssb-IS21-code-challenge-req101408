@@ -73,7 +73,11 @@ const val = require("../tools/validate");
  *                 $ref: '#/components/schemas/Product'
  *       500:
  *         description: An error occured while retrieving products
- *
+ *         content:
+ *           text/plain:
+ *             schema:
+ *               type: string
+ *               example: "An error occured while retrieving products."
  */
 
 // get all products
@@ -100,8 +104,13 @@ router.get('/api/products',
 *           application/json:
 *             schema:
 *               $ref: '#/components/schemas/Product'
-*       500:
-*         description: An error occured while creating the new product
+ *       500:
+ *         description: An error occured while retrieving products
+ *         content:
+ *           text/plain:
+ *             schema:
+ *               type: string
+ *               example: "An error occured while creating the new product"
 */
 
 // add new product
@@ -138,8 +147,18 @@ router.post('/api/new_product',
 *               $ref: '#/components/schemas/Product'
 *       404:
 *         description: Could not find a product with the specified id
+*         content:
+*           text/plain:
+*             schema:
+*               type: string
+*               example: "Error: no product with the specified id"
 *       500:
 *         description: An error occured while updating the product
+*         content:
+*           text/plain:
+*             schema:
+*               type: string
+*               example: "An error occured while updating the product"
 */
 
 // edit product
