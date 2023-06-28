@@ -10,6 +10,10 @@
 # testing
 /frontend/coverage
 
+# next.js
+/.next/
+/out/
+
 # production
 /frontend/build
 
