@@ -2,6 +2,7 @@ import Head from 'next/head';
 import styles from '../styles/Home.module.css';
 import { useState, useEffect } from 'react';
 import AddProductForm from '../components/addproductform';
+import EditProductForm from '../components/editproductform';
 
 
 const API_URL = 'http://localhost:3000/api/'
@@ -9,9 +10,20 @@ const API_URL = 'http://localhost:3000/api/'
 export default function Home() {
   const [products, setProducts] = useState([]);
   const [addingProduct, setAddingProduct] = useState(false);
+  const [editingProduct, setEditingProduct] = useState(false);
+  const [productNumber, setProductNumber] = useState(0);
 
   function handleAddProductButton() {
     setAddingProduct(false);
+  }
+
+  function handleEditButton(prodNumber){
+    setEditingProduct(true);
+    setProductNumber(prodNumber);
+  }
+
+  function exitEditMode(){
+    setEditingProduct(false);
   }
 
   useEffect(() => {
@@ -48,6 +60,18 @@ export default function Home() {
             <AddProductForm change={handleAddProductButton} setAddingProduct={setAddingProduct} />
           </div>
         }
+        { editingProduct &&
+          <>
+          <div className="justify-center b items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
+            <div className={styles.card + " bg-white"}>
+              <EditProductForm change={exitEditMode} editProduct={products[productNumber]} />
+            </div>
+          </div>
+          <div className="opacity-25 fixed inset-0 z-40 bg-black">
+          </div>
+          </>
+        }
+
         <div className={styles.card}>
           <div className="relative overflow-x-auto">
             <table className="w-full text-md text-left text-gray-500 dark:text-gray-400">
@@ -76,7 +100,7 @@ export default function Home() {
                       <td className="px-6 py-4">{product.startDate}</td>
                       <td className="px-6 py-4">{product.methodology}</td>
                       <td className="px-6 py-4"><a className="text-blue-500 hover:text-blue-700" href={product.location} target="_blank">{product.location}</a></td>
-                      <td className="px-6 py-4"><button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Edit</button></td>
+                      <td className="px-6 py-4"><button onClick={() => handleEditButton(product.productId)} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Edit</button></td>
                     </tr>
                   )
                 }

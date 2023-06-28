@@ -10,7 +10,7 @@ const new_product_schema = Joi.object({
     location: Joi.string().uri().required()
 });
 
-var edit_product_schema = Joi.object({
+const edit_product_schema = Joi.object({
     productName: Joi.string(),
     scrumMasterName: Joi.string(),
     productOwnerName: Joi.string(),
@@ -39,8 +39,10 @@ e.validateNewProduct = () => {
 e.validateEditProduct = () => {
     return (req, res, next) => {
         prod = req.body;
+        console.log(prod);
         const result = edit_product_schema.validate(prod);
         if (result.error) {
+            console.log(result.error);
             return res.status(401).send(result.error.details)
         }
         next();
