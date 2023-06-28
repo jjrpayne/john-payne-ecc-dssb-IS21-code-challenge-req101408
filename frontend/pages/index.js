@@ -1,17 +1,29 @@
 import Head from 'next/head';
 import styles from '../styles/Home.module.css';
 import { useState, useEffect } from 'react';
+import AddProductForm from '../components/addproductform';
+
 
 const API_URL = 'http://localhost:3000/api/'
 
 export default function Home() {
   const [products, setProducts] = useState([]);
+  const [addingProduct, setAddingProduct] = useState(false);
+
+  function handleAddProductButton() {
+    setAddingProduct(false);
+  }
 
   useEffect(() => {
     const fetchdata = async () => {
-      const response = await fetch(API_URL + 'products');
-      const data = await response.json();
-      setProducts(data);
+      try {
+        const response = await fetch(API_URL + 'products');
+        const data = await response.json();
+        setProducts(data);
+      } catch(err) {
+        console.log("err");
+        alert(err);
+      }
     }
     fetchdata();
   })
@@ -27,10 +39,15 @@ export default function Home() {
         <h1 className={styles.title}>
           ECC Web Application Catalogue
         </h1>
-
         <p className={styles.description}>
           Total products: {products.length}
         </p>
+        <button className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded" onClick={() => setAddingProduct(!addingProduct)}>Add Product</button>
+        { addingProduct &&
+          <div className={styles.card}>
+            <AddProductForm change={handleAddProductButton} setAddingProduct={setAddingProduct} />
+          </div>
+        }
         <div className={styles.card}>
           <div className="relative overflow-x-auto">
             <table className="w-full text-md text-left text-gray-500 dark:text-gray-400">
@@ -43,6 +60,7 @@ export default function Home() {
                   <th scope="col" className="px-6 py-3">Developer Names</th>
                   <th scope="col" className="px-6 py-3">Start Date</th>
                   <th scope="col" className="px-6 py-3">Methodology</th>
+                  <th scope="col" className="px-6 py-3">Location</th>
                   <th scope="col" className="px-6 py-3">Action</th>
                 </tr>
               </thead>
@@ -57,6 +75,7 @@ export default function Home() {
                       <td className="px-6 py-4">{product.Developers.toString().replace(/,/g, ', ')}</td>
                       <td className="px-6 py-4">{product.startDate}</td>
                       <td className="px-6 py-4">{product.methodology}</td>
+                      <td className="px-6 py-4"><a className="text-blue-500 hover:text-blue-700" href={product.location} target="_blank">{product.location}</a></td>
                       <td className="px-6 py-4"><button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Edit</button></td>
                     </tr>
                   )

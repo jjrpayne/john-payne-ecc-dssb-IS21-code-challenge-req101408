@@ -25,9 +25,11 @@ e = module.exports;
 e.validateNewProduct = () => {
     return (req, res, next) => {
         prod = req.body;
+        console.log(prod);
         const result = new_product_schema.validate(prod);
         if (result.error) {
-            return res.status(401).send({message: result.error.details})
+            console.log(result.error);
+            return res.status(401).send(result.error.details);
         }
         next();
     }
@@ -39,7 +41,7 @@ e.validateEditProduct = () => {
         prod = req.body;
         const result = edit_product_schema.validate(prod);
         if (result.error) {
-            return res.status(401).send({message: result.error.details})
+            return res.status(401).send(result.error.details)
         }
         next();
     }

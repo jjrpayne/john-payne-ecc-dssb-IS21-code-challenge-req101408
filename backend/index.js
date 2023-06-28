@@ -25,7 +25,7 @@ const options = {
       ],
     },
     apis: ["./routes/*.js"],
-  };
+};
 
 // Add Access Control Allow Origin headers
 app.use((req, res, next) => {
