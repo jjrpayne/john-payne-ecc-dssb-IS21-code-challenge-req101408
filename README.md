@@ -1,4 +1,5 @@
 # John Payne - IS21 Code Challenge - req101408
+This is my submission to a [coding competition](https://github.com/bcgov/ecc-dssb-IS21-code-challenge-req101408) for a position at the BC Public Service. This submission passed the coding challenge and I was able to move on to the next stage of the competition.
 
 This web application is designed to catalogue all of the web applications belongong to the BC Ministry of Education and Child Care. It allows users to view all existing products, as well as add new products and edit existing products.
 
