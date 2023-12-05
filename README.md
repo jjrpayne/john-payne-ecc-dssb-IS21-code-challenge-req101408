@@ -3,6 +3,8 @@ This is my submission to a [coding competition](https://github.com/bcgov/ecc-dss
 
 This web application is designed to catalogue all of the web applications belongong to the BC Ministry of Education and Child Care. It allows users to view all existing products, as well as add new products and edit existing products.
 
+(I was allowed to post this solution publicly)
+
 ## Install and run 
 
 ### Backend
